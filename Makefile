@@ -1,5 +1,5 @@
 FLAGS = -Iinclude -Werror
-BINS = test-quicksort
+BINS = bin/test-quicksort bin/*o
 
 all: bin/quicksort.o test
 
@@ -12,4 +12,4 @@ bin/test-quicksort: test/test-quicksort.c bin/quicksort.o
 	gcc ${FLAGS} -o bin/test-quicksort test/test-quicksort.c bin/quicksort.o
 
 clean:
-	rm bin/*
+	rm ${BINS}
