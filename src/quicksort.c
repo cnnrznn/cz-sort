@@ -7,14 +7,14 @@
  *  lohi - the place where lo and hi meet
  */
 
-void swap(int a, int b, double *arr)
+static void swap(int a, int b, double *arr)
 {
     double tmp = arr[a];
     arr[a] = arr[b];
     arr[b] = tmp;
 }
 
-int partition(int lo, int hi, double *arr)
+static int partition(int lo, int hi, double *arr)
 {
     double pivot = arr[hi];
     int i, lohi=lo;
