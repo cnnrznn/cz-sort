@@ -26,7 +26,7 @@ static void bubble_down(heap *h, int index)
     }
     if (h->comp(h->elems[min_index], h->elems[2*index + 1]) < 0) {
         // swap right child and root
-        min_index++;
+        min_index = 2*index + 1;
     }
 
     if (min_index != index) {
