@@ -7,20 +7,20 @@
  *  lohi - the place where lo and hi meet
  */
 
-static void swap(int a, int b, double *arr)
+static void swap(int a, int b, array *arr)
 {
-    double tmp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = tmp;
+    void *tmp = arr->elems[a];
+    arr->elems[a] = arr->elems[b];
+    arr->elems[b] = tmp;
 }
 
-static int partition(int lo, int hi, double *arr)
+static int partition(int lo, int hi, array *arr)
 {
-    double pivot = arr[hi];
+    void *pivot = arr->elems[hi];
     int i, lohi=lo;
 
     for (i=lo; i<hi; i++) {
-        if (arr[i] < pivot) {
+        if (arr->comp(arr->elems[i], pivot) > 0) {
             swap(i, lohi++, arr);
         }
     }
@@ -29,7 +29,7 @@ static int partition(int lo, int hi, double *arr)
     return lohi;
 }
 
-void quicksort(int lo, int hi, double *arr)
+void quicksort(int lo, int hi, array *arr)
 {
     if (hi < lo) {
         return;

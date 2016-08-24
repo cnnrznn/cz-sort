@@ -2,7 +2,7 @@
 
 #include "heap.h"
 
-void heap_init(heap *h, long size, int (*compare)(void*,void*))
+void heap_init(heap *h, int size, int (*compare)(void*,void*))
 {
     h->n = 0;
     h->size = size;
