@@ -1,5 +1,5 @@
 FLAGS = -Iinclude -Werror
-BINS = bin/test-quicksort bin/quicksort.o bin/array.o
+BINS = bin/array.o bin/test-quicksort bin/quicksort.o
 
 all: ${BINS}
 
