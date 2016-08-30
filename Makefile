@@ -1,5 +1,5 @@
 FLAGS = -Iinclude -Werror
-BINS = bin/array.o bin/test-quicksort bin/quicksort.o bin/heap.o
+BINS = bin/array.o bin/test-quicksort bin/quicksort.o bin/heap.o bin/test-heap
 
 all: ${BINS}
 
@@ -16,6 +16,9 @@ bin/test-quicksort: test/test-quicksort.c bin/quicksort.o
 
 bin/heap.o: src/heap.c include/heap.h
 	gcc ${FLAGS} -c -o bin/heap.o src/heap.c
+
+bin/test-heap: test/test-heap.c bin/heap.o include/heap.h
+	gcc ${FLAGS} -o bin/test-heap test/test-heap.c bin/heap.o
 
 clean:
 	rm ${BINS}
