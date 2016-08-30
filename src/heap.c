@@ -6,7 +6,7 @@ void heap_init(heap *h, int size, int (*compare)(void*,void*))
 {
     h->n = 0;
     h->size = size;
-    h->elems = malloc(size * sizeof(void*));
+    h->elems = malloc((size+1) * sizeof(void*));
     h->comp = compare;
 }
 
@@ -19,24 +19,24 @@ static void bubble_down(heap *h, int index)
 {
     int min_index = index;
 
-    // find lesser of children from index
-    if (h->comp(h->elems[min_index], h->elems[2*index]) < 0) {
-        // swap left child and root
-        min_index = 2*index;
-    }
-    if (h->comp(h->elems[min_index], h->elems[2*index + 1]) < 0) {
-        // swap right child and root
-        min_index = (2*index) + 1;
-    }
+    if (2*min_index < h->n) { // are there children?
+        // find lesser of children from index
+        if (h->comp(h->elems[min_index], h->elems[2*index]) < 0) {
+            // swap left child and root
+            min_index = 2*index;
+        }
+        if (h->comp(h->elems[min_index], h->elems[2*index + 1]) < 0) {
+            // swap right child and root
+            min_index = (2*index) + 1;
+        }
 
-    if (min_index != index) {
-        // do the swap
-        void *tmp = h->elems[index];
-        h->elems[index] = h->elems[min_index];
-        h->elems[min_index] = tmp;
+        if (min_index != index) {
+            // do the swap
+            void *tmp = h->elems[index];
+            h->elems[index] = h->elems[min_index];
+            h->elems[min_index] = tmp;
 
-        // recurse
-        if (2*min_index < h->n) {
+            // recurse
             bubble_down(h, min_index);
         }
     }
@@ -51,7 +51,7 @@ static void bubble_up(heap *h, int index)
         h->elems[index] = h->elems[parent];
         h->elems[parent] = tmp;
 
-        if (parent > 0) {
+        if (parent > 1) {
             bubble_up(h, parent);
         }
     }
