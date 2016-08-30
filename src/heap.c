@@ -15,7 +15,7 @@ void heap_free(heap *h)
     free(h->elems);
 }
 
-static void bubble_down(heap *h, int index)
+void bubble_down(heap *h, int index)
 {
     int min_index = index;
 
@@ -40,7 +40,7 @@ static void bubble_down(heap *h, int index)
     }
 }
 
-static void bubble_up(heap *h, int index)
+void bubble_up(heap *h, int index)
 {
     if (index > 1) {
         int parent = index / 2;

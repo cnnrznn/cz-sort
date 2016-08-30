@@ -11,6 +11,9 @@ typedef struct heap {
 void heap_init(heap*, int, char (*)(void*,void*));
 void heap_free(heap*);
 
+void bubble_down(heap*, int);
+void bubble_up(heap*, int);
+
 void heap_insert(heap*, void*);
 void* heap_extract(heap*);
 
