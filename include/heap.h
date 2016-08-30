@@ -8,7 +8,7 @@ typedef struct heap {
     int (*comp)(void*,void*);
 } heap;
 
-void heap_init(heap*, int, int (*compare)(void*,void*));
+void heap_init(heap*, int, int (*)(void*,void*));
 void heap_free(heap*);
 
 void heap_insert(heap*, void*);

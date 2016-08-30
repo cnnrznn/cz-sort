@@ -26,7 +26,7 @@ static void bubble_down(heap *h, int index)
     }
     if (h->comp(h->elems[min_index], h->elems[2*index + 1]) < 0) {
         // swap right child and root
-        min_index = 2*index + 1;
+        min_index = (2*index) + 1;
     }
 
     if (min_index != index) {
@@ -44,7 +44,17 @@ static void bubble_down(heap *h, int index)
 
 static void bubble_up(heap *h, int index)
 {
+    int parent = index / 2;
 
+    if (h->comp(h->elems[index], h->elems[parent]) > 0) {
+        void *tmp = h->elems[index];
+        h->elems[index] = h->elems[parent];
+        h->elems[parent] = tmp;
+
+        if (parent > 0) {
+            bubble_up(h, parent);
+        }
+    }
 }
 
 void heap_insert(heap *h, void *e)
@@ -59,7 +69,7 @@ void heap_insert(heap *h, void *e)
     }
 }
 
-void *heap_extract(heap *h)
+void* heap_extract(heap *h)
 {
     if (h->n > 0) {
         void *e = h->elems[0];
