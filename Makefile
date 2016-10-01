@@ -1,5 +1,6 @@
 FLAGS = -Iinclude -Werror
-BINS = bin/array.o bin/test-quicksort bin/quicksort.o bin/heap.o bin/test-heap
+BINS = bin/array.o bin/test-quicksort bin/quicksort.o bin/heap.o bin/test-heap \
+        bin/binsearch.o bin/test-binsearch
 
 all: ${BINS}
 
@@ -17,8 +18,14 @@ bin/test-quicksort: test/test-quicksort.c bin/quicksort.o
 bin/heap.o: src/heap.c include/heap.h
 	gcc ${FLAGS} -c -o bin/heap.o src/heap.c
 
+bin/binsearch.o: src/binsearch.c include/binsearch.h
+	gcc ${FLAGS} -c -o bin/binsearch.o src/binsearch.c
+
 bin/test-heap: test/test-heap.c bin/heap.o include/heap.h
 	gcc ${FLAGS} -o bin/test-heap test/test-heap.c bin/heap.o
+
+bin/test-binsearch: test/test-binsearch.c bin/binsearch.o include/binsearch.h bin/array.o
+	gcc ${FLAGS} -o bin/test-binsearch test/test-binsearch.c bin/binsearch.o bin/array.o
 
 clean:
 	rm ${BINS}
