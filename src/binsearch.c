@@ -1,10 +1,10 @@
 #include "binsearch.h"
 
-void* binsearch(array *arr, void *other)
+void* binsearch(array *arr, void *other, int start, int end)
 {
     char res;
-    int index = arr->size / 2;
-    int first = 0, last = arr->size-1;
+    int first = start, last = end;
+    int index = (first + last) / 2;
 
     while (arr->comp(arr->elems[index], other) != 0) {
         res = arr->comp(arr->elems[index], other);
