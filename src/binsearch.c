@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "binsearch.h"
 
 void* binsearch(array *arr, void *other, int start, int end)
@@ -14,6 +16,9 @@ void* binsearch(array *arr, void *other, int start, int end)
             last = index - 1;
 
         index = (first + last) / 2;
+
+        if (last <= first)
+            return NULL;
     }
 
     return arr->elems[index];

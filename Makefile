@@ -1,4 +1,4 @@
-FLAGS = -Iinclude -Werror
+FLAGS = -Iinclude -Werror -ggdb
 BINS = bin/array.o bin/test-quicksort bin/quicksort.o bin/heap.o bin/test-heap \
         bin/binsearch.o bin/test-binsearch
 
