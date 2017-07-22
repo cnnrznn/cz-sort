@@ -17,7 +17,7 @@ void* binsearch(array *arr, void *other, int start, int end)
 
         index = (first + last) / 2;
 
-        if (last <= first)
+        if (last < first)
             return NULL;
     }
 
