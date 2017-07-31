@@ -30,9 +30,9 @@ int main()
     for (i=0; i<100; i++)
         arr.elems[i] = &data[i];
 
-    int target = 77;
+    int target = 99;
 
-    int *res = binsearch(&arr, (void*)(&target));
+    int *res = binsearch(&arr, (void*)(&target), 0, arr.size-1);
 
     printf("Target: %d\n", target);
     printf("Found:  %d\n", *res);
