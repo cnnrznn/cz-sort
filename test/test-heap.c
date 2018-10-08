@@ -3,7 +3,8 @@
 
 #include "heap.h"
 
-#define SIZE 100000
+#define INITIAL_SIZE 100
+#define SIZE 200
 
 static char int_compare(void *a, void *b)
 {
@@ -22,15 +23,15 @@ int main()
     int i, j;
 
     heap h;
-    heap_init(&h, SIZE, int_compare);
+    heap_init(&h, INITIAL_SIZE, int_compare);
 
     int *data = malloc(SIZE * sizeof(int));
 
     for (i=0; i<SIZE; i++) {
         data[i] = rand() % 100;
         heap_insert(&h, &data[i]);
-        //printf("%d ", data[i]);
-    } //printf("\n");
+        printf("%d ", data[i]);
+    } printf("\n");
 
     printf("%d %d\n", h.n, h.size);
     /*

@@ -59,7 +59,7 @@ void heap_insert(heap *h, void *e)
 {
         if (h->n >= h->size) {
                 h->size *= 2;
-                h->elems = realloc(h->elems, h->size);
+                h->elems = realloc(h->elems, (h->size+1)*sizeof(void*));
         }
 
         // increment number of elements
