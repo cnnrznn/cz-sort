@@ -57,7 +57,11 @@ void bubble_up(heap *h, int index)
 
 void heap_insert(heap *h, void *e)
 {
-    if (h->n < h->size) {
+        if (h->n >= h->size) {
+                h->size *= 2;
+                h->elems = realloc(h->elems, h->size);
+        }
+
         // increment number of elements
         h->n++;
 
@@ -66,7 +70,6 @@ void heap_insert(heap *h, void *e)
 
         // bubble up e
         bubble_up(h, h->n);
-    }
 }
 
 void* heap_extract(heap *h)

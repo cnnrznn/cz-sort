@@ -40,7 +40,8 @@ int main()
     */
 
     for (i=0; i<SIZE; i++) {
-        heap_extract(&h);
+        int *res = heap_extract(&h);
+        printf("%d, ", *res);
         /*
         for (j=1; j<=h.n; j++) {
             printf("%d ", *(int*)h.elems[j]);
