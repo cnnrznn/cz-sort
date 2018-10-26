@@ -1,8 +1,11 @@
 FLAGS = -Iinclude -Werror -ggdb
 BINS = bin/array.o bin/test-quicksort bin/quicksort.o bin/heap.o bin/test-heap \
-        bin/binsearch.o bin/test-binsearch
+        bin/binsearch.o bin/test-binsearch bin/queue.o
 
 all: ${BINS}
+
+bin/queue.o: src/queue.c include/queue.h
+	gcc ${FLAGS} -c -o bin/queue.o src/queue.c
 
 bin/quicksort.o: src/quicksort.c include/quicksort.h
 	gcc ${FLAGS} -c -o bin/quicksort.o src/quicksort.c
